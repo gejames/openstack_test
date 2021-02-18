@@ -1,0 +1,15 @@
+---
+- name: test playbook for adding collections in tower
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: create stack
+      openstack.cloud.stack:
+        name: mystack
+        state: present
+        template: "simplestack.yaml"
+      register: stack_create
+      ignore_errors: true
+
